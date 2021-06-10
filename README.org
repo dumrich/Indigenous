@@ -1,0 +1,90 @@
+* Indigenous
+Indigenous is a cross-platform native GUI framework. On Linux, HTML/CSS is converted to GTK3 widgets; On Windows, HTML/CSS is converted to native WINAPI GUI's.
+
+Note: As of 6/10/21, development has not yet started on Indigenous.
+
+** Why use ~Indigenous~?
+Indigenous is the best cross-platform GUI framework because:
+
+- It doesn't use any Chromium/Webview bull$hit that has large binary sizes and consumes all your resources with no regard to anything. Indigenous uses native API's on all platforms and is written in Rust, so your app is likely to be light and quick.
+
+- Indigenous looks native on all platforms. Unlike other cross platform GUI frameworks like GTK or QT, Indigenous uses native API's to render GUI's. This means it is fast and looks great.
+
+- Indigenous uses languages very similar to HTML/CSS to render the front end. Unlike electron, this code is parsed by Python, and drawn natively.
+
+** TODO
+- [X] Create README and set examples
+
+- [ ] Create a CLI and a parser in Python
+
+- [ ] Send parsed data to Rust backend
+
+- [ ] Create wrapper around GTK allow GUI on Linux
+
+- [ ] Create bindings around Win32 API to allow for GUI on Windows
+
+- [ ] Allow for custom logic through Rust file and handle events
+
+- [ ] Create bindings around Cocoa to allow for GUI and events in MacOs.
+
+** How it works
+The user creates HTML like files. The python cli parses the files, and calls the Rust backend to handle the data for whatever operating system the GUI is being designed for.
+
+In the Rust backend, there is an enum with a couple of variants representing an operating system. For example, a button widget will have three enums for each operating system. Depending on which operating system is being compiled for, the core will render the widget. There are special bindings around crates like GTK-rs that allow for uniform usage and creation of widgets that can be easily placed.
+
+Then, you can easily code for actions on each widget in a ~main.rs~ file. These Rust files also replace CSS.
+
+** Usage
+Create a window:
+
+#+begin_src html
+<html height=720 width=1080>
+
+</html>
+#+end_src
+
+Create a title:
+
+#+begin_src html
+<html>
+    <head>
+      <title>This is a window title!</title>
+    </head>
+</html>
+#+end_src
+
+Create a label:
+
+#+begin_src html
+<html>
+    <head>
+      <title>This is a window title!</title>
+    </head>
+    <body>
+      <p>
+        This is a label
+      </p>
+    </body>
+</html>
+#+end_src
+
+Create a button:
+
+#+begin_src html
+<html>
+    <head>
+      <title>This is a window title!</title>
+    </head>
+    <body>
+      <p size=13>
+        This is a label
+      </p>
+      <button></button>
+    </body>
+</html>
+#+end_src
+
+
+
+** License
+Licensed under LGPL, created by AC
